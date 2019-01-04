@@ -1,0 +1,43 @@
+#{set title: 'Rancho Alegre'/}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="Matheus Pinherio Pereira" content="">
+
+        <title>#{get 'title' /}</title>
+        <!--chamadado bootstrap css para todos os modelos-->
+        <link rel="stylesheet" media="screen" href="@{'/public/css/bootstrap.min.css'}">
+        <link rel="stylesheet" midia="screen" href="@{'/public/css/Start.css'}" />
+        #{get 'moreStyles' /}
+    </head>
+
+    <body> 
+        <!--box caixa-->
+        <div class="box">
+            <div class="modal-body">
+
+                <div class="tag">
+                    <!-- <img alt="" src="/public/images/chefe.jpg">-->
+                </div>
+
+                <div id="label">Rancho Alegre</div>
+
+            </div>
+
+            <div class="imagem">
+                <img alt="" src="/public/images/chefe.jpg">
+            </div>
+
+            <div>
+                <a href="@{Logins.login}"> <button  class="log-btn">Funcionario</button></a>
+                <a href="@{Clientes.cliente}"><button  class="log-btn">Cliente</button></a>
+            </div>
+        </div>
+        #{get 'moreScripts' /}
+    </body>
+</html>
+

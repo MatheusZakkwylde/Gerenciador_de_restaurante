@@ -1,0 +1,121 @@
+@charset "UTF-8"; /*Deixando o css em linguagem latina*/
+
+/*Fontes carregadas da pasta fonts*/
+
+@font-face{
+    font-family : 'fonte';            /*Nome da fonte*/
+    src: url("/public/fonts/glyphicons-halflings-regular.woff2");   /*Caminho da fonte*/
+}
+
+body{
+    padding: 30px;
+    background-color: #eee;
+    background-image:  url("/public/images/fudo.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+} 
+/*body do cardapio*/
+.body{
+    background-color: #eee;
+    margin-top: 50px;
+    margin-left: 50px;
+    border-radius: 30px;
+
+}
+.navbar{
+    background-color:#00a680;
+
+    padding-top: 15px;
+    padding-left: 10px;
+    font-family: fonte;
+    word-spacing: -5px;
+    font-size: 16px;
+}
+.navbar a{
+    color:#fff;
+}
+
+.navbar a:hover{
+    color:#088A08;/*verde mais escuro*/ 
+    text-decoration: none;
+}
+/*conteinner dos box*/
+.conteiner{
+    background-color: #fff;
+}
+/*box de conteudo*/
+.box{ 
+    position: relative;/*posição relativa a pagina*/
+    z-index: 1;/*box que tem como empilhamento igual a um por ser o primeiro*/
+    width: 230px; /*Altura e largura do box*/
+    height: 50px; 
+    margin:40px auto 0;
+    text-align: center;
+    font-size: 20px;
+    color:#fff;
+    text-shadow:0 1px 0 #fff; /*cor do esqueceu senha*/
+    background:/*quadrados da borda*/
+        -webkit-radial-gradient(0 100%, circle, rgba(204,0,0,0) 29px, #00a680 29px),
+        -webkit-radial-gradient(100% 100%, circle, rgba(204,0,0,0) 29px, #00a680 29px),
+        -webkit-radial-gradient(100% 0, circle, rgba(204,0,0,0) 29px, #00a680 29px),
+        -webkit-radial-gradient(0 0, circle, rgba(204,0,0,0) 29px, #00a680 29px);
+
+    background:/*aredondamento das bordas*/
+        radial-gradient(0 100%, circle, rgba(204,0,0,0) 29px, #00a680 29px),
+        radial-gradient(100% 100%, circle, rgba(204,0,0,0) 29px, #00a680 29px),
+        radial-gradient(100% 0, circle, rgba(204,0,0,0) 29px, #00a680 29px),
+        radial-gradient(0 0, circle, rgba(204,0,0,0) 29px, #00a680 29px);	
+    background-position: bottom left, bottom right, top right, top left;
+    background-size: 50% 50%;
+    background-repeat: no-repeat;
+}
+.conteinerleft{
+    border-left: solid 1px #00a680;  
+} 
+.conteinerright{
+    border-right: solid 1px #00a680;
+}
+.botoes{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.conteudo{
+    margin-top: 30px;
+    font-family: fonte;
+    font-size: 16px;
+    word-spacing: -10px;
+}
+
+.preco{
+    float: right;
+}
+h4{
+    font-size: 18px;
+}
+h5{
+    font-size: 17px;
+}
+.acompanhamento{
+    margin-left: 20px;
+}
+#label{
+    text-align: center;
+    font-family: fonte;
+    font-size: 30px;
+    word-spacing: -15px;
+    color: #fff;
+    background-color: #00a680; 
+    border-radius: 15px 15px 0px 0px;
+    padding-bottom: 10px;
+}
+#rodape{
+    text-align: center;
+    font-family: fonte;
+    font-size: 30px;
+    word-spacing: -15px;
+    color: #fff;
+    background-color: #00a680; 
+    border-radius: 0px 0px 15px 15px;
+    margin-top: 10px; 
+}

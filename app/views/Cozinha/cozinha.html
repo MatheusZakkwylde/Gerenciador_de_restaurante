@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+#{set title: 'Rancho Alegre - Pedidos'/}
+<html>
+    <head>
+        <title>#{get 'title' /}</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" media="screen" href="@{'/public/css/box.css'}">
+        <link rel="stylesheet" media="screen" href="@{'/public/css/Cozinha.css'}">
+        <!--chamada do css do bootstrap para todo o sistema-->
+        <link rel="stylesheet" media="screen" href="@{'/public/css/bootstrap.min.css'}">
+        <script src="@{'/public/js/jquery-3.2.1.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+    </head>
+    <!--chamada da função atualizar pagina-->
+    <body onload="setInterval(' Atualizar()', 10000)" >
+
+        <div class="container-fist">
+            <div class="row">
+                <nav class=" col-md-12" >
+                    <div class="row">
+                        <div class="col-md-12" id="caixa">
+                            <a class="link" href="@{Home.home}" ><i class="glyphicon glyphicon-home"></i><span> Home </span></a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <!--comandas ou pedidos do cliente-->
+            <!--flash-->
+            #{if flash.success}
+            <div class="alert alert-success col-md-15">
+                <p>${flash.success.raw()}</p>
+            </div>
+            #{/if}
+
+            <div class="col-md-12">
+
+                #{list items: comandas, as:'comanda'}
+                #{if comanda.status == 1}
+                <!--box caixa comanda-->
+                <div class="box-caixa  col-md-3 modal-body">
+                    <div class="tag">
+                        <!--cabeça da comanda-->
+                    </div>
+                    <div id="label">Rancho Alegre</div>
+
+                    <div  class ="cabeca">
+                        <div class="caixa">
+                            <p>Nº :</p>
+                            <p>${comanda.numero}</p>
+                        </div>
+                    </div>
+
+                    <div class="cabeca" id="cliente">
+                        <div class="caixa">
+                            <p>Cliente :</p>
+                            <p>${comanda.cliente}</p>
+                        </div>
+                    </div>
+
+                    <div class="caixa">
+                        <p>Pedidos :</p>
+                    </div>
+
+                    #{list items:comanda.pedidos, as:'pedido'}
+
+                    <!--pedido-->
+                    <div class="caixa texto">
+                        <p>Garçom: ${pedido.garcom}</p>
+
+                        <div class="row">
+                            <div class="col-md-12 conteudo">
+                                <p>${pedido.tipo} ${pedido.quantidade} ${pedido.Pedido.nome}
+                                    ${pedido.informacao}   
+                                </p>
+                            </div>
+
+                            <div class="rodapePedido col-md-12">
+                                <p>Status: ${pedido.status}</p>  
+                                <div id="bt">
+                                    <a href="@{Cozinha.pedidoFeito(pedido.id)}" ><button class="btn btn-sm " data-toggle="modal" data-target="#delete-modal"><span>Feito </span><span  class = "glyphicon glyphicon-thumbs-up"></span></button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--fim de pedidos-->
+                    #{/list}
+                    <!--Rodapé da comanda-->
+                    <div class="rodape">
+                        <div class="caixa" >
+                            <p>Data:</p>
+                            <p>${comanda.data}</p>
+                        </div>
+                    </div>
+                </div>
+                #{/if}
+                #{/list}
+            </div>
+        </div>
+        <!--chamada do audio pegando o url pelo id-->
+        <audio id="audio">
+            <source src="@{'/public/audio/pedido.wav'}" type="audio/wav" />
+        </audio>
+
+        <!--se tem pedido toque o audio-->
+        #{if temNovoPedido}
+        <script type="text/javascript">
+            var audio = document.getElementById('audio');
+            audio.play();
+        </script>
+        #{/if}
+
+    </body>
+    <!-- chamada do script bootstrap para o funcionamento do menu com a biblioteca jquery-->
+    <script src="@{'/public/js/bootstrap.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+    <!--função atualizar pagina-->
+    <script type="text/javascript">
+
+            function Atualizar(){
+            window.location.reload();
+            }
+
+
+    </script>
+</html>
+
+

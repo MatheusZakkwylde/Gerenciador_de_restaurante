@@ -1,0 +1,141 @@
+#{extends 'Template/template.html'/}
+#{set title: 'Funcionario'/}
+<link rel="stylesheet" media="screen" href="@{'/public/css/Usuario.css'}">
+<div class="col-md-2"></div>
+
+<div class="col-md-12" id="form">
+    <div class="col-md-10">
+        <form action="@{Cadastros.salvarUsuario}" name="Filter" class="form" method="post" enctype="multipart/form-data">
+
+            <div class="col-md-12">
+                <label id="Label" for="formGroupExampleInput">Cadastro Usuário: </label>
+                <div class="modal-footer"></div>
+            </div>
+
+            <input type="hidden" value="${usuarios?.id}" name="usuarios.id">
+
+            <div   class="form-group col-md-2 margem"> 
+
+                #{if usuarios.foto?.exists()}
+                <img  src="@{Cadastros.foto(usuarios.id)}" id="img" accept="image/*" class="img-responsive" class="img-thumbnail" >
+                #{/if}
+                #{else}
+                <img  src="@{Cadastros.fotoPadrao}" id="img" accept="image/*"  class="img-responsive" class="img-thumbnail" >
+                #{/else}
+
+                <div id ="botao" class="col-md-12">
+                    <div >
+                        <label class="btn btn-primary btn-sm " for='upload' ><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span></label>
+                        <input id="upload" class="form-control" type="file" name="usuarios.foto"  onchange="uploadimg();" >
+                        #{if usuarios.id != null && usuarios.foto.exists()}
+                        <a href ="@{Cadastros.removerFoto(usuarios.id)}" class="btn btn-danger btn-sm " onclick="excluir(1)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                        #{/if}
+                        #{else}
+                        <a class="btn btn-danger btn-sm " onclick="excluir(1);"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                        #{/else}
+                    </div>
+                </div>
+            </div>
+
+            <div  class="col-md-10 ">
+                <div class="form-group col-md-12">
+                    <label><h11>*</h11> Nome:</label>
+                    <input type="text" name="usuarios.nome" value="${usuarios?.nome}" class="form-control" placeholder="Ex: Matheus Pinheiro Pereira" required>
+                </div>
+
+                <div class="form-group col-md-4">
+
+                    <label for="status"><h11>*</h11> Cargo :</label>
+                    <select class="form-control col-5" name="usuarios.cargo">
+                        
+                        <option>Selecione:</option>
+                        #{list items:cargos, as:'cargo'}
+                        <option value="${cargo}" 
+                                ${(usuarios?.id != null && usuarios?.cargo == cargo)? 'selected':'' }>${cargo}</option>
+                        #{/list}
+                    </select>
+                </div>
+
+                <div class="form-group col-md-8">
+                    <label for="formGroupExampleInput"><h11>*</h11> E-mail:</label> 
+                    <input type="email" name="usuarios.email" value="${usuarios?.email}" class="form-control" placeholder="Ex.: MatheusPinheiro@hotmail.com" required>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="formGroupExampleInput"><h11>*</h11> Cpf:</label> 
+                    <input type="text"  name="usuarios.cpf" id="cpf" value="${usuarios?.cpf}" class="form-control"  placeholder="Ex.: 000.000.000-00" required>
+                </div>
+
+                <div class="form-group col-md-4 ">
+                    <label for="formGroupExampleInput"><h11>*</h11> Telefone:</label> 
+                    <input type="text" name="usuarios.telefone"  id="telefone" value ="${usuarios?.telefone}"class="form-control" placeholder="Ex.: (00) 0000-0000" required> 
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="formGroupExampleInput"><h11>*</h11> Telefone Celular:</label> 
+                    <input type="text" name="usuarios.celular" id="celular"  value ="${usuarios?.celular}"class="form-control" placeholder="Ex.: (00) 00000-0000" required> 
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="col-md-2"></div>
+
+                <div class="form-group col-md-5">
+                    <label for="formGroupExampleInput"><h11>*</h11> Logradouro:</label>
+                    <input type="text" name="usuarios.logradouro" value="${usuarios?.logradouro}" class="form-control" placeholder="Ex.: Rua Adalto Gomes de Paiva" required>
+                </div>
+
+
+                <div class="form-group col-md-5">
+                    <label for="formGroupExampleInput"><h11>*</h11> Bairro:</label>
+                    <input type="text" name="usuarios.bairro" value="${usuarios?.bairro}" class="form-control" placeholder="Ex.: Benedito Bentes" required>
+                </div>
+
+                <div class="col-md-2"></div>
+
+                <div class="form-group col-md-5">
+                    <label for="formGroupExampleInput"><h11>*</h11> Estado:</label> 
+
+                    <select  name="usuarios.estado" id="estado" value = "${usuarios?.estado}" class="form-control" required>
+                        <!--os options são colocados pelo script-->
+                    </select>
+                </div>
+
+                <div class="form-group col-md-5">
+                    <label for="formGroupExampleInput"><h11>*</h11> Cidade:</label> 
+                    <select  name="usuarios.cidade" id="cidade" value = "${usuarios?.cidade}" class="form-control" required>    
+                        <!--os options são colocados pelo script apos escolha do estado-->
+                    </select>
+                </div>
+                <div class="col-md-2"></div>
+
+                <div class="form-group col-md-3">
+                    <label for="formGroupExampleInput"><h11>*</h11> Senha:</label>
+                    <input  type="password" class="form-control" name="usuarios.senha" value="${usuarios?.senha}" placeholder="senha" required>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label for="formGroupExampleInput"><h11>*</h11> Confirmar Senha:</label>
+                    <input type="password" name="usuarios.confSenha" value="${usuarios.confSenha}" class="form-control" placeholder="senha novamente"  required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="formGroupExampleInput">Informações:</label>
+                    <textarea name="usuarios.informacoes" class="form-control" rows="3" placeholder="Informação">${usuarios?.informacoes}</textarea>
+                </div>
+            </div>
+
+            <div class="modal-footer col-md-12">
+                <button type="submit" class="btn btn-success">Cadastrar</button>
+                <button type="reset" class="btn btn-default" data-dismiss="modal">Limpar</button>
+            </div> 
+        </form> 
+    </div>
+</div> 
+
+<!--chamada da mudança de foto-->
+<script src="@{'/public/js/uploadImg.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<!--chamada da mascara dos campos-->
+<script src="@{'/public/js/Mascara.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<!--chamando do script estados e cidades-->
+<script src="@{'/public/js/cidades-estados-utf8.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<script src="@{'/public/js/CidadeEstado.js'}" type="text/javascript" charset="${_response_encoding}"></script>

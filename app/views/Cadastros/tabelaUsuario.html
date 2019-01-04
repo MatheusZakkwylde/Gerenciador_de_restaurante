@@ -1,0 +1,104 @@
+#{extends 'Template/template.html'/}
+#{set title: 'Rancho Alegre - Funcionario'/}
+<link rel="stylesheet" media="screen" href="@{'/public/css/tabelaUsuario.css'}">
+<div class="col-md-2">
+
+</div>
+
+<div class="col-md-10"> 
+    <div class="col-md-12 ">
+
+        <div class="col-md-12 caixa">
+            #{list items:usuarios, as:'usuario'}
+            <div class="col-md-12" id="conteudo">
+
+                <div class="col-md-2 form-group">
+                    #{if usuario.foto?.exists()}
+                    <img  src="@{Cadastros.foto(usuario.id)}" accept="image/*" class="img-responsive" class="img-thumbnail" >
+                    #{/if}
+                    #{else}
+                    <img  src="@{Cadastros.fotoPadrao}" accept="image/*"  class="img-responsive" class="img-thumbnail" >
+                    #{/else}
+                </div>
+
+                <div class="col-md-10 divs">
+                    <label>Cargo:</label>
+                    <p>${usuario.cargo}</p>
+                </div>
+
+                <div class="col-md-10 divs">
+                    <label>Nome:</label>
+                    <p>${usuario.nome}</p>
+                </div>
+
+                <div class="col-md-2 divs" >
+                    <label>CPF:</label>
+                    <p>${usuario.cpf}</p>
+                </div>
+
+                <div class="col-md-3 divs">
+                    <label>Telefone:</label>
+                    <p>${usuario.telefone}</p>
+                </div>
+
+                <div class="col-md-5 divs">
+                    <label>Celular:</label>
+                    <p>${usuario.celular}</p>
+                </div>
+
+                <div class="col-md-5 divs">
+                    <label>E-mail:</label>
+                    <p>${usuario.email}</p>
+                </div>
+
+                <div class="col-md-5 divs">
+                    <label>Logradouro:</label>
+                    <p>${usuario.logradouro}</p>
+                </div>
+
+                <div class="col-md-3 divs">
+                    <label>Bairro:</label>
+                    <p>${usuario.bairro}</p>
+                </div>
+                <div class="col-md-3 divs">
+                    <label>Informaçoes:</label>
+                    <p>${usuario.informacoes}</p>
+                </div>
+
+                <div class="col-md-1 divs">
+                    <label>Estado:</label>
+                    <p>${usuario.estado}</p>
+                </div>
+
+                <div class="col-md-2 divs">
+                    <label>Cidade:</label>
+                    <p>${usuario.cidade}</p>
+                </div>  
+
+                <div class="col-md-12" id="botoes">
+                    <button class="btn btn-sm btn-danger"><span  class = "glyphicon glyphicon-trash" data-toggle="modal" data-target="#delete-modal"></span></button>
+                    <a href="@{Cadastros.editarUsuario(usuario.id)}"><button class="btn btn-sm btn-primary "><span class ="glyphicon glyphicon-edit"></span></button></a>
+                </div>
+            </div>
+            
+            <!-- janela Modal -->
+            <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="modalLabel">Excluir usuário</h4>
+                        </div>
+                        <div class="modal-body">Deseja deleta esse usuário?</div>
+                        <div class="modal-footer">
+                            <a href="@{Cadastros.removerUsuario(usuario.id)}" ><button type="button" class="btn btn-primary">sim</button></a>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            #{/list}
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,32 @@
+
+#form{
+    margin-left: 230px;
+    background-color: #fff
+}
+#Label{
+    margin-top: 15px;
+}
+
+input[type='file'] {
+    display: none;
+}
+
+h11{
+    color: #DF0101;
+}
+
+img{
+    margin-left: 25px;
+    border: solid 1px #eee;
+}
+
+#botao{
+     margin-top:5px;
+     margin-left: 40px;
+}
+#botoes{
+    padding-left: 50px;
+}
+#caixa{
+    margin-left: 10px;
+}

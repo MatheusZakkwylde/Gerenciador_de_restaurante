@@ -1,0 +1,92 @@
+#{extends 'Template/template.html'/}
+#{set title: 'Rancho Alegre-Produtos'/}
+<link rel="stylesheet" media="screen" href="@{'/public/css/Produto.css'}">
+<div class="col-md-2">
+
+</div>
+<div class="col-md-12">
+
+    <div class="col-md-12">
+
+        <div class="col-md-12" id="form">
+            <form action="@{Cadastros.salvarProduto}" name="Filter" class="form" method="post">
+                <div class="col-md-8" id="caixa">
+
+                    <div class="col-md-12">
+                        <label for="formGroupExampleInput">Cadastro Produtos: </label>
+                        <div  class="modal-footer"></div>
+                    </div>
+
+                    <input type="hidden" value="${produto?.id}" name="produto.id">
+
+                    <div class="form-group col-md-12">
+
+                        <label for="inlineFormCustomSelect"><h11>*</h11> Fornecedor:</label>
+
+                        <select name="produto.fornecedor.id" class="form-control">
+                            <option value>Selecione:</option>    
+                            #{list items:fornecedor, as:'fornecedor'}
+                            <option value="${fornecedor.id}" ${(produto?.id != null && produto?.fornecedor.id == fornecedor.id)? 'selected':'' }>${fornecedor.nome}</option>
+                            #{/list}
+                        </select>
+                    </div>
+                    
+                    
+                    <div class="form-group col-md-9">
+                        <label for="formGroupExampleInput"><h11>*</h11> Produto:</label>
+                        <input type="text" name="produto.produto" value="${produto?.produto}"  class="form-control" placeholder="Digite Produto" required>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="formGroupExampleInput"><h11>*</h11> Quantidade:</label> 
+                        <input type="number" name="produto.quantidade" value="${produto?.quantidade}" id = "quantidade" class="form-control input-md" placeholder="Digite Quantidade"  required>
+                    </div>
+                        
+                    <div class="form-group col-md-4">
+                        <label for="formGroupExampleInput"><h11>*</h11> Preço Unitario R$:</label> 
+                        <input name="produto.precoUnitario" value="${produto?.precoUnitario}" id="precoUnitario"  placeholder="Digite Sem Virgula" onblur="multiplica()" class="form-control input-md " required>
+                    </div>
+                    
+                    <div class="form-group col-md-4">			
+                        <label for="formGroupExampleInput"><h11>*</h11> Data Compra:</label> 			
+                        <input type="date" name="produto.dataCompra" value="${produto?.dataCompra}" class="form-control input-md" required/>
+                    </div>
+
+                    <div class="form-group col-md-4">			
+                        <label for="formGroupExampleInput"><h11>*</h11> Pagar Fornecedor:</label> 			
+                        <input type="date" name="produto.dataPagarFornecedor" value="${produto?.dataPagarFornecedor}" class="form-control input-md" required/>
+                    </div>
+                    
+                    <div class="col-md-12">
+                        <label for="formGroupExampleInput">Informação:</label></br>
+                        <textarea name ="produto.informacao"  class="form-control" rows="4" placeholder="Digite aqui">${produto?.informacao}</textarea>
+                    </div>
+                    
+                    <div class="form-group col-md-3 " id="paga">
+                        <label for="formGroupExampleInput">Valor Pagar R$:</label> 
+                        <input name="produto.pagarFornecedor" value="${produto?.pagarFornecedor}" readonly id = "pagarFornecedor" class="form-control input-md" required>
+                    </div>
+
+                    
+
+                    <div id ="botao" class="modal-footer col-md-12">
+                        <button type="submit" class="btn btn-success">Cadastrar</button>
+                        <button type="reset" class="btn btn-default" data-dismiss="modal">Limpar</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--chamada da  biblioteca maskMoney para marcara de moeda-->
+<script src="@{'/public/js/maskMoney.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<!--chamada para calcula o pagamento do fornecedor-->
+<script src="@{'/public/js/CalcularPagamento.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+
+
+<script type="text/javascript">
+                            $(document).ready(function () {
+                                $("#precoUnitario").maskMoney({decimal: ".", thousands: "."});
+                            });
+
+</script>

@@ -1,0 +1,91 @@
+#{extends 'Template/template.html'/}
+#{set title: 'Fornecedor'/}
+<link rel="stylesheet" media="screen" href="@{'/public/css/Fornecedor.css'}">
+<div class="col-md-2">
+
+</div>
+<div class="container">
+    <div class="col-md-12" id="container">
+        <div class="col-md-12">
+            <div class="col-md-12">
+                <div class="col-md-12">
+
+                    <form action="@{Cadastros.salvaFornecedor}" name="Filter" class="form" method="post">
+
+
+                        <div class="col-md-10 caixa">
+                            <label id="label">Cadastro Fornecedor: </label>
+                            <div class="modal-footer"></div>
+                            <input type="hidden" value="${fornecedor?.id}" name="fornecedor.id">
+
+                            <div class="form-group col-md-12">
+                                <label for="formGroupExampleInput"><h11>*</h11> Empresa:</label> 
+                                <input type="text" name="fornecedor.Empresa" value="${fornecedor?.Empresa}" class="form-control" placeholder="Ex.: Petrobras" required>
+                            </div>
+
+                            <div class="form-group col-md-5">
+                                <label for="formGroupExampleInput"><h11>*</h11> Nome do Contato:</label> 
+                                <input type="text" name="fornecedor.nome" value="${fornecedor?.nome}"  class="form-control" placeholder="Ex.: João de Oliveira Santos"  required>
+                            </div>
+
+                            <div class="form-group col-md-7">
+                                <label for="formGroupExampleInput"><h11>*</h11> Email:</label> 
+                                <input type="email" name="fornecedor.email" value ="${fornecedor?.email}" class="form-control" placeholder="Ex.: anonymous@gmail.com" required>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="formGroupExampleInput"><h11>*</h11> Telefone:</label> 
+                                <input type="text" name="fornecedor.telefone" id="telefone" value ="${fornecedor?.telefone}" class="form-control" placeholder="Ex.: (00) 0000-0000" required >
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="formGroupExampleInput"><h11>*</h11> Telefone Celular:</label> 
+                                <input type="text" name="fornecedor.celular" id="celular" value ="${fornecedor?.celular}" class="form-control" placeholder="Ex.: (00) 00000-0000" required >
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="formGroupExampleInput"><h11>*</h11> Logradouro:</label> 
+                                <input type="text" name="fornecedor.logradouro" value="${fornecedor?.logradouro}" class="form-control" placeholder="Ex.: Rua São Pedro Gomes" required >
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <label for="formGroupExampleInput"><h11>*</h11> Bairro:</label> 
+                                <input type="text" name="fornecedor.bairro" value="${fornecedor?.bairro}" class="form-control" placeholder="Ex.: Presidente Dutra" required>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="formGroupExampleInput"><h11>*</h11> Estado:</label> 
+
+                                <select  name="fornecedor.estado" id="estado" value = "${fornecedor?.estado}" class="form-control" required>
+                                    <!--os options são colocados pelo script-->
+                                </select>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="formGroupExampleInput"><h11>*</h11> Cidade:</label> 
+                                <select  name="fornecedor.cidade" id="cidade" value = "${fornecedor?.cidade}" class="form-control" required>    
+                                    <!--os options são colocados pelo script apos escolha do estado-->
+                                </select>
+                            </div>
+
+                            <div id="btn" class="col-md-4">
+                                <label for="formGroupExampleInput">Informação:</label></br>
+                                <textarea name = "fornecedor.informacoes" class="form-control" placeholder="Obervação" rows="3">${fornecedor?.informacoes}</textarea>
+                            </div>	
+                        </div>
+                        <div id="margem" class="modal-footer col-md-12">
+                            <button type="submit" class="btn btn-success">Cadastrar</button>
+                            <button type="reset" class="btn btn-default" data-dismiss="modal">Limpar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>  
+        </div>
+    </div>
+</div>
+
+<!--chamada das mascaras dos campos-->
+<script src="@{'/public/js/Mascara.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<!--chamando do script estados e cidades-->
+<script src="@{'/public/js/cidades-estados-utf8.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<script src="@{'/public/js/CidadeEstado.js'}" type="text/javascript" charset="${_response_encoding}"></script>

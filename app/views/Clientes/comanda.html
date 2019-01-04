@@ -1,0 +1,99 @@
+#{set title: 'Rancho Alegre - comanda'/}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>#{get 'title' /}</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" media="screen" href="@{'/public/css/bootstrap.min.css'}">
+        <link rel="stylesheet" media="screen" href="@{'/public/css/ClienteComanda.css'}">
+    </head>
+    <body>
+        <div class="row">
+            <nav class=" col-md-12" >
+                <div class="col-md-12" id="caixa">
+                
+                <a href="@{Clientes.logout}"><p class='glyphicon glyphicon-circle-arrow-left'> Sair</p></a>
+                <a href="@{Cardapios.cardapioCliente}"><span> Cardápio </span><span class="glyphicon glyphicon-apple"></span></a>
+                </div>
+            </nav>
+        </div>
+
+        <!--comandas ou pedidos do cliente-->
+        <div id= "comandas" class="col-md-12">
+            <div class="col-md-4"></div>
+            #{list items: comandas, as:'comanda'}
+            #{if comanda.status == 1}
+            <!--box caixa comanda-->
+            <div class="box  col-md-3 modal-body">
+                <div class="tag">
+                    <!--cabeça da comanda-->
+                </div>
+                <div id="label">Rancho Alegre</div>
+
+                <div  class ="cabeca">
+                    <div class="caixa">
+                        <p>Nº :</p>
+                        <p>${comanda.numero}</p>
+                    </div>
+                    <div class="caixa">
+                        <p>Acesso :</p>
+                        <p>${comanda.senha}</p>
+                    </div>
+                </div>
+
+                <div class="cabeca" id="cliente">
+                    <div class="caixa">
+                        <p>Cliente :</p>
+                        <p>${comanda.cliente}</p>
+                    </div>
+                </div>
+
+                <div class="caixa">
+                    <p>Pedidos :</p>
+                </div>
+
+                #{list items:comanda.pedidos, as:'pedido'}
+                <!--pedido-->
+                <div class="caixa texto">
+                    <p>Garçom: ${pedido.garcom}</p>
+
+                    <div class="row">
+                        <div class="col-md-12 conteudo">
+                            <p>${pedido.tipo} ${pedido.quantidade} ${pedido.Pedido.nome}
+                                ${pedido.informacao}
+                            </p>
+                        </div>
+
+                        <div class="status col-md-12" >
+
+                            <p>Preço: ${pedido.preco} R$</p>
+                        </div>
+
+                        <div class="rodapePedido col-md-12">
+                            <p>Status: ${pedido.status}</p>
+                        </div>
+                    </div>
+                </div>
+                <!--fim de pedidos-->
+               
+                #{/list}
+                <!--Rodapé da comanda-->
+                <div class="rodape">
+                    <div class="caixa" >
+                        <p>Data:</p>
+                        <p>${comanda.data}</p>
+                    </div>
+
+                    <div class="caixa total">
+                        <p>${comanda.total} R$</p>
+                        <p>Total:<p>
+                    </div>
+                </div>
+            </div>
+            #{/if}
+            #{/list}
+        </div>
+    </body>
+</html>

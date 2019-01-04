@@ -1,0 +1,154 @@
+#{extends 'Template/template.html'/}
+#{set title: 'Rancho Alegre - Pedidos'/}
+<link rel="stylesheet" media="screen" href="@{'/public/css/box.css'}">
+<link rel="stylesheet" media="screen" href="@{'/public/css/CaixaComandas.css'}">
+
+<nav class=" col-md-12" >
+    <div class="col-md-10" id="caixa">
+        <div class="row">
+            <div class="col-md-2 btns">
+                <a class="link" href="@{Caixas.comandas}" ><span>Comandas </span><i class="glyphicon glyphicon-list-alt"></i></a>
+            </div>
+
+            <div class="col-md-3 btns">
+                <a class="link"href="@{Caixas.empenhadas}" ><span>Empenhadas </span><i class="glyphicon glyphicon-list-alt"></i></a>
+            </div>
+
+            <div class="col-md-2 btns">
+                <a class="link"href="@{Caixas.inativas}" ><span>Inativas </span><i class="glyphicon glyphicon-list-alt"></i></a>
+            </div>
+            <div class="col-md-2 btns">
+                <a class="link" href="@{Caixas.saldo}"><span>Saldo </span><i class="glyphicon glyphicon-usd"></i></a>
+            </div>
+            <div class="col-md-3 btns">
+                <a class="link"href="@{Caixas.fechaCaixa(1)}" ><span>Fecha caixa </span><i class="glyphicon glyphicon-usd"></i></a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div id= "pedidos" class="col-md-12">
+
+    <!--cabeçalho de pesquisa-->
+    <div class="col-md-12 ">
+
+        <div class="col-md-6">
+            <!--apenas espaço-->
+        </div>
+
+        <div class="col-md-4">
+
+            <form action="@{Caixas.buscaComandas}" method="POST">
+                <div class="input-group">
+                    <input name="busca" class="form-control" type="text" placeholder="Ex.: Cliente">
+                    <span class="input-group-btn">
+                        <button class="btn" type="submit"><span class="glyphicon glyphicon-search"></span> Busca</button>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--fim do cabeçalho de pesquisa-->
+
+    <!--comandas ou pedidos do cliente-->
+    <div id= "comandas" class="col-md-12">
+
+        #{list items: comandas, as:'comanda'}
+        #{if comanda.status == 1}
+        <!--box caixa comanda-->
+        <div class="box  col-md-3 modal-body">
+            <div class="tag">
+                <!--cabeça da comanda-->
+            </div>
+            <div id="label">Rancho Alegre</div>
+
+            <div  class ="cabeca">
+                <div class="caixa">
+                    <p>Nº :</p>
+                    <p>${comanda.numero}</p>
+                </div>
+                <div class="caixa">
+                    <p>Acesso :</p>
+                    <p>${comanda.senha}</p>
+                </div>
+            </div>
+
+            <div class="cabeca" id="cliente">
+                <div class="caixa">
+                    <p>Cliente :</p>
+                    <p>${comanda.cliente}</p>
+                </div>
+            </div>
+
+            <div class="caixa">
+                <p>Pedidos :</p>
+            </div>
+
+            #{list items:comanda.pedidos, as:'pedido'}
+            <!--pedido-->
+            <div class="caixa texto">
+                <p>Garçom: ${pedido.garcom}</p>
+
+                <div class="row">
+                    <div class="col-md-12 conteudo">
+                        <p>${pedido.tipo} ${pedido.quantidade} ${pedido.Pedido.nome}
+                            ${pedido.informacao}
+                        </p>
+                    </div>
+
+                    <div class="status col-md-12" >
+
+                        <p>Preço: ${pedido.preco} R$</p>
+                    </div>
+
+                    <div class="rodapePedido col-md-12">
+                        <p>Status: ${pedido.status}</p>
+                    </div>
+                </div>
+            </div>
+            <!--fim de pedidos-->
+            #{/list}
+
+            <!--Rodapé da comanda-->
+            <div class="rodape">
+                <div class="caixa" >
+                    <p>Data:</p>
+                    <p>${comanda.data}</p>
+                </div>
+
+                <div class="caixa total">
+                    <p>${comanda.total} R$</p>
+                    <p>Total:<p>
+                </div>
+            </div>
+
+
+            <div class ="desconto">
+                <a href="@{Caixas.Desconto(comanda.id)}"><button class="btn bt" >Desconto</button></a>
+                <a href="@{Caixas.empenhaComanda(comanda.id)}"><button  class="btn bt">Empenhar</button></a>
+            </div>
+            <div>
+              <button class="btn bt"  data-toggle="modal" data-target="#delete-modal" >Fecha comanda</button>
+            </div>
+    </div>
+    <!-- janela Modal -->
+    <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="modalLabel">Excluir Comanda</h4>
+                </div>
+                <div class="modal-body">Deseja realmente excluir esta comanda? </div>
+                <div class="modal-footer">
+                    <a href="@{Caixas.inativasComandas(comanda.id,1)}"><button type="button" class="btn btn-primary">sim</button></a>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    #{/if}
+    #{/list}
+</div>
+
+

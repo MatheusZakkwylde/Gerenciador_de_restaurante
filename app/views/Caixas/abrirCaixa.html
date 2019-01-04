@@ -1,0 +1,45 @@
+#{extends 'Template/template.html'/}
+#{set title: 'Rancho Alegre -Caixa'/}
+<link rel="stylesheet" media="screen" href="@{'/public/css/AbrirCaixa.css'}">
+
+<div class="col-md-10 caixa">
+    
+    <form action="@{Caixas.salvarValorCaixa(1)}" name="Filter" class="form" method="post" enctype="multipart/form-data">
+        
+        <div class="col-md-12">
+            <label>Abrir Caixa</label>
+            <div  class="modal-footer"></div>
+        </div>
+        
+        <div class="col-md-1">
+            <label id="label" ><h11>*</h11> Data: </label>
+        </div>
+        <div class="col-md-3">
+            <input type="date" name="caixa.data" value="${caixa?.data}" class="form-control">
+        </div>
+        
+        <div class=" col-md-6">
+            
+            <div class="col-md-3">
+                <label id="label" ><h11>*</h11> Valor Inicial: </label>
+            </div >
+            
+            <div class=" input-group col-md-6">
+                <input type="text" name="caixa.total" id="preco" value="${caixa?.total}" class="form-control">
+
+                <span class="input-group-btn">
+                    <button type="submit" class="btn">Abrir</button>
+                </span>
+            </div>
+        </div>
+    </form>
+</div>
+<!--chamada da  biblioteca maskMoney para marcara de moeda-->
+<script src="@{'/public/js/maskMoney.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+
+<script type="text/javascript">
+                            $(document).ready(function () {
+                                $("#preco").maskMoney({decimal: ".", thousands: "."});
+                            });
+
+</script>

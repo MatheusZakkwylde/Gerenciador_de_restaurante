@@ -1,0 +1,34 @@
+@charset "UTF-8"; /*Deixando o css em linguagem latina*/
+
+/*Fontes carregadas da pasta fonts*/
+
+@font-face{
+    font-family : 'fonte';            /*Nome da fonte*/
+    src: url("/public/fonts/glyphicons-halflings-regular.woff2");   /*Caminho da fonte*/
+}
+.caixa{
+    margin-left: 240px;
+    margin-top: 10px;
+}
+.input-group-btn .btn{
+    
+   background-color: #00a680;  
+   color: #fff;
+   border: solid 1px #088A08;/*verde mais escuro*/ 
+}
+
+.input-group-btn .btn:hover{
+    background-color: #fff;
+    color:#088A08;/*verde mais escuro*/ 
+}
+.label {
+    margin-top: 5px;
+}
+#label{
+    margin-top: 8px;
+}
+
+h11{
+    color: #DF0101;
+}
+    

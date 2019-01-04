@@ -1,0 +1,25 @@
+#col{
+    margin-top: 30px;
+  margin-left: 230px;
+}
+
+#removerFoto{
+    margin-left: 30px;
+}
+
+
+input[type='file'] {
+    display: none
+}
+/* todos os modalfooter*/
+.modal-footer{
+    margin-top: 10px;
+}
+
+
+#botao{
+    margin-left: 30px;
+}
+h11{
+    color: #DF0101;
+}

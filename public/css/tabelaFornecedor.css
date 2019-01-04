@@ -1,0 +1,55 @@
+@charset "UTF-8"; /*Deixando o css em linguagem latina*/
+
+/*Fontes carregadas da pasta fonts*/
+
+@font-face{
+    font-family : 'fonte';            /*Nome da fonte*/
+    src: url("/public/fonts/glyphicons-halflings-regular.woff2");   /*Caminho da fonte*/
+}
+/*tabela cabeça*/
+#subTabela{
+    background-color: #00a680;
+    margin-top: 10px;
+}
+
+.panel-title{
+    color:#fff;
+    font-family: fonte;
+    font-size: 20px;
+}
+.caixa{
+    margin-left: 234px;
+}
+/*cabecalho da tabela*/
+#cabecalho{
+    background-color: #00a680;
+    color: #fff;
+    font-family: fonte;
+    font-size: 16px;
+}
+
+/*conteudo da mesa*/
+#conteudoTabela{
+    font-family: fonte;
+    color: #000;
+}
+
+/*botao de busca*/
+#buscaBotao{
+    background-color: #00a680;
+    font-family: fonte;
+    font-size: 15px;
+    color: #fff;
+}
+#buscaBotao:hover{
+    background-color: #fff;
+    color: #088A08;
+    border:solid 1px #088A08;
+    font-family: fonte;
+    font-size: 15px;
+}
+
+.table-responsive{
+    margin-top: 10px;
+}
+

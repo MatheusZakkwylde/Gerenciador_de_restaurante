@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="Matheus Pinherio Pereira" content="">
+
+        <title>#{get 'title' /}</title>
+        <!--chamada do css do bootstrap para todo o sistema-->
+        <link rel="stylesheet" media="screen" href="@{'/public/css/bootstrap.min.css'}">
+        <link rel="stylesheet" media="screen" href="@{'/public/css/simple-sidebar.css'}">
+        <!-- Custom styles for this template -->
+
+        <!--chamada dos bibliotecas jquery e jquery mask para todo o sistema-->
+        <script src="@{'/public/js/jquery-3.2.1.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="@{'/public/js/jquery.mask.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+    </head>
+
+    <body> 
+        <div class="container-fist">
+            <div id="menu" class="col-md-12">
+
+                <!-- Menu de itens topo lado esquerdo -->
+                <ul id="btn" class="nav navbar-right top-nav ">
+                    <li><a href="@{Perfil.perfil}" class="btn"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
+                    <li><a data-toggle="modal" data-target="#delete-modall" class="btn"><span class="glyphicon glyphicon-off"></span> Sair</a> </li>
+                    <li><label id="icone" for="bt_menu">&#9776;</label></li>
+                </ul>
+            </div>
+
+            <div>
+                <ul class="sidebar-nav">
+                    <li >
+                        <a href="@{Home.home}"><span>Home</span><i class="glyphicon glyphicon-home"></i></a> 
+                    </li>
+
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#click1"> Cadastros<i class="glyphicon glyphicon-th"></i></a> 
+
+                        <ul id="click1" class="collapse">
+                            <li>
+                                <a href="javascript:;" data-toggle="collapse" data-target="#click2">
+                                    <span>Funcionario</span><i class="glyphicon glyphicon glyphicon-user"></i>
+                                </a>
+
+                                <ul id="click2" class="collapse">
+                                    <li>
+                                        <a href="@{Cadastros.usuario}"><span>Cadastra</span><i class= "glyphicon glyphicon-menu-hamburger"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="@{Cadastros.tabelaUsuario}"><span>Funcionarios</span><i class ="glyphicon glyphicon-list-alt"></i></a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="javascript:;" data-toggle="collapse" data-target="#click3">
+                                    <span>Fornecedor</span><i class=" glyphicon glyphicon-bed"></i></a>
+
+                                <ul id="click3" class="collapse">
+                                    <li>
+                                        <a href="@{Cadastros.fornecedor}"><span>Cadastra</span><i  class= "glyphicon glyphicon-menu-hamburger" ></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="@{Cadastros.tabelaFornecedor}"><span>Fornecedores</span><i class ="glyphicon glyphicon-list-alt"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;" data-toggle="collapse" data-target="#click4">
+                                            <span>Produto</span><i class="glyphicon glyphicon-apple"></i></a>
+
+                                        <ul id="click4" class="collapse">
+                                            <li>
+                                                <a href="@{Cadastros.produto}"><span>Cadastra</span><i class= "glyphicon glyphicon-menu-hamburger"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="@{Cadastros.tabelaProduto}"><span>Produtos</span><i class ="glyphicon glyphicon-list-alt"></i></a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:;" data-toggle="collapse" data-target="#click5">
+                                    <span>Cardápio</span><i class="glyphicon glyphicon-cutlery"></i></a>
+
+                                <ul id="click5" class="collapse">
+                                    <li>
+                                        <a href="@{Cardapios.cardapio}"><span>Cadastra</span><i class= "glyphicon glyphicon-menu-hamburger"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="@{Cardapios.tabelaCardapio}"><span>Cardápio</span><i class="glyphicon glyphicon-cutlery"></i></a>
+                                    </li>
+                                </ul>
+                            </li> 
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="@{Comandas.comanda}"><span>Comanda</span><i class="glyphicon glyphicon-list-alt"></i></a>
+                    </li> 
+
+                    <li>
+                        <a href="@{Cardapios.cardapioCasa}"><span>Cardápio</span><i class="glyphicon glyphicon-cutlery"></i></a>
+                    </li>
+
+                    <li>
+                        <a href="@{Cozinha.cozinha}"><span>Cozinha</span><i class="glyphicon 	glyphicon glyphicon-home"></i></a>
+                    </li>
+
+                    <li>
+                        <a href="@{Caixas.abrirCaixa(1)}"><span>Caixa</span><i class="glyphicon glyphicon-usd"></i></a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#click6">
+
+                            <span>Financeiro</span><i class="glyphicon glyphicon-piggy-bank"></i>
+                        </a>
+
+                        <ul id="click6" class="collapse">
+                            <li>
+                                <a href=""><span>Contas a pagar</span><i class="glyphicon glyphicon-open"></i></a>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <a href="@{Graficos.grafico}"><span>Relatórios</span><i class="glyphicon glyphicon-list-alt"></i></a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- janela Modal -->
+            <div class="modal fade" id="delete-modall" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
+
+                        </div>
+                        <div class="modal-body">Deseja realmente Sair? </div>
+                        <div class="modal-footer">
+                            <a id="remove" href="@{Logins.logout}"><button type="button" class="btn btn-primary">sim</button></a>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--flash-->
+            #{if flash.success}
+            <div class="alert alert-success col-md-10">
+                <p>${flash.success.raw()}</p>
+            </div>
+            #{/if}
+
+            <!-- Mensagem de erro -->
+            #{if flash.error}
+            <div class="alert alert-danger col-md-10">
+                <p>${flash.error.raw()}</p>
+            </div>
+            #{/if}
+             
+            #{doLayout /} 
+        </div>
+        #{get 'moreScripts' /}
+    </body>
+
+    <!-- chamada do script bootstrap para o funcionamento do menu com a biblioteca jquery-->
+    <script src="@{'/public/js/bootstrap.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+
+</html>

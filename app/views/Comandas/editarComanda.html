@@ -1,0 +1,46 @@
+#{extends 'Template/template.html'/}
+#{set title: 'Rancho Alegre -Comanda'/}
+<link rel="stylesheet" media="screen" href="@{'/public/css/ComandaEditar.css'}">
+<!--criação de comanda cliente-->
+<div id="comanda" class="col-md-12">
+    <div class="col-md-12">
+        
+        <div class="col-md-10">
+            <label for="formGroupExampleInput">Editar Comanda: </label>
+        </div>
+        <div class="modal-footer col-md-12"></div>
+
+        <form action="@{Comandas.salvarComandaEditada}" name="Filter" method="post">
+
+            <input type="hidden" name="comanda.id" value="${comanda?.id}"/>
+
+            <div class="form-group col-md-1">
+                <label><h11>*</h11> Nº :</label> 
+                <input type="number"  name="comanda.numero" value="${comanda?.numero}" readonly class="form-control">
+            </div>
+
+            <div class="form-group col-md-5">
+                <label><h11>*</h11> Cliente:</label>
+                <input type="text" name="comanda.cliente" value="${comanda?.cliente}" class="form-control" placeholder="Ex.: Matheus Pinheiro Pereira" required>		
+            </div>
+            <div class="col-md-2">
+                <label><h11>*</h11> Data:</label>
+                <input type="date" name="comanda.data" value="${comanda?.data}" class="form-control">		
+            </div>
+
+            <div class="input-group col-md-2">
+                <label>Senha: </label>
+                <input type="text" id="senha" name="comanda.senha" value="${comanda?.senha}" class="form-control" readonly>
+                <span id= "gera"class="input-group-btn">
+                    <button class="btn btn-gera" >Gerar</button>
+                </span>
+            </div>
+
+            <div class="modal-footer col-md-10">
+                <button type="submit" class="btn btn-success">Criar</button>
+                <button type="reset" class="btn btn-default" data-dismiss="modal">Limpar</button>
+            </div>
+        </form> 
+    </div>
+</div>
+<!--fim da comanda cliente-->

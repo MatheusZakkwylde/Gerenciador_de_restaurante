@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="Matheus Pinherio Pereira" content="">
+
+        <title>#{get 'title' /}</title>
+        <link rel="stylesheet" media="screen" href="@{'/public/css/bootstrap.min.css'}">
+        <link rel="stylesheet" media="screen" href="@{'/public/css/Login.css'}">
+        #{get 'moreStyles' /}
+    </head>
+
+    <body>  
+        <div class="container-fist">
+            <div>
+                <nav  class="navbar navbar-inverse navbar-fixed-top">
+                    <a href="@{Start.start}"><p class='glyphicon glyphicon-circle-arrow-left'> Volta</p></a>
+                </nav>
+                <!--box caixa-->
+                <div class="box">
+
+                    <form  method="POST" action="@{Logins.autenticacao}">
+                        <div class="modal-body">
+                            <div class="tag">
+                                <!--<img alt="" src="/public/images/logo2.ico">-->
+                            </div>
+
+                            <div id="label">Rancho Alegre</div>
+
+                            <div>
+                                <input type="email" name="email" id="email"  value="${flash['email']}" class="form-control" placeholder="E-mail" required autofocus>
+                            </div>
+
+                            <div>
+                                <input type="password" name="senha" id="senha" class="form-control" placeholder="Senha" required >
+                            </div>
+
+                            <div>
+                                <a class="link" href="#" ><span>Esqueceu sua senha?</span></a>
+                            </div>
+                        </div>
+
+                        <div>
+                            <button type="submit" class="log-btn">Entrar</button>
+                        </div>
+                    </form>
+                    <!-- Mensagem de erro -->
+                #{if flash.error}
+                <div class="alert alert-danger col-md-12">
+                    <p>${flash.error.raw()}</p>
+                </div>
+                #{/if}
+                </div>
+            </div>
+            #{get 'moreScripts' /}
+    </body>
+</html>

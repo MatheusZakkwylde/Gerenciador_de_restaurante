@@ -1,0 +1,98 @@
+#{extends 'Template/template.html'/}
+#{set title: 'Rancho Alegre -Cardapio'/}
+<link rel="stylesheet" media="screen" href="@{'/public/css/tabelaCardapio.css'}">
+
+<div class="col-md-2">
+
+</div>
+<div id ="tabela" class="col-md-10"> 
+    <div class="col-md-12">
+        <div class="col-md-12 panel panel-primary">
+
+            <!--cabeçalho do painel-->
+            <div class="col-md-12 panel-heading" id="subTabela">
+
+                <div class="col-md-7">
+                    <p class="panel-title">Cardápio</p>
+                </div>
+
+                <div class="col-md-5">
+                    <form action="" method="POST">
+                        <div class="input-group">
+                            <input name="busca" class="form-control" type="text" placeholder="Ex.: Nome / E-mail / Cidade">
+                            <span class="input-group-btn">
+                                <button class="btn" id="buscaBotao" type="submit"><span class="glyphicon glyphicon-search"></span> Busca</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!--parte de texto do painel-->
+            <div class="panel-body">
+                <div class="col-md-12">
+
+                    <div class="table-responsive ">
+                        <table class="table table-striped table-hover ">
+
+                            #{list items:pratos, as:'prato'}
+                            <thead >
+                                <tr id="cabecalho">
+                                    <th>Foto</th>
+                                    <th>Tipo</th>
+                                    <th>Nome</th>
+                                    <th>Acompanhamentos</th>
+                                    <th>Quantidade</th>
+                                    <th>Preço</th>
+                                    <th>Ação</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <th>
+                                        #{if prato.foto?.exists()}
+                                        <img  src="@{Cardapios.fotoPrato(prato.id)}" id="uploadPrevio" accept="image/*" style="width: 150px; height: 150px;" class="img-responsive" class="img-thumbnail" >
+                                        #{/if}
+                                        #{else}
+                                        <img  src="@{Cardapios.fotoPadrao}" id="uploadPrevio" accept="image/*" style="width: 150px; height: 150px;" class="img-responsive" class="img-thumbnail" >
+                                        #{/else}
+                                    </th>
+                                    <th>${prato.tipo}</th>
+                                    <th>${prato.nome}</th>
+                                    <th>${prato.acompanhamento}</th>
+                                    <th>${prato.quantidade}</th>
+                                    <th>${prato.preco}</th>
+                                    <th><a href="@{Cardapios.cardapio}"><button class="btn btn-sm btn-success"><span class = "glyphicon glyphicon-plus"></span></button></a></th>
+                                    <th><a href="@{Cardapios.editarPrato(prato.id)}"><button class="btn btn-sm btn-primary "><span class ="glyphicon glyphicon-edit" ></span></button></a></th>
+                                    <th><button class="btn btn-sm btn-danger"><span  class = "glyphicon glyphicon-trash" data-toggle="modal" data-target="#delete-modal"></span></button></th>
+                                </tr>
+                            </tbody>
+
+                            <!-- janela Modal -->
+                            <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="modalLabel">Excluir produto</h4>
+                                        </div>
+                                        <div class="modal-body">Deseja realmente excluir este Produto? </div>
+                                        <div class="modal-footer">
+                                            <a id="remove" href="@{Cardapios.removerPratos(prato.id)}"> <button type="button" class="btn btn-primary">sim</button></a>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            #{/list}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

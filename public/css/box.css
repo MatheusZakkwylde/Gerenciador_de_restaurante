@@ -1,0 +1,98 @@
+@charset "UTF-8"; /*Deixando o css em linguagem latina*/
+
+/*Fontes carregadas da pasta fonts*/
+
+@font-face{
+    font-family : 'fonte';            /*Nome da fonte*/
+    src: url("/public/fonts/glyphicons-halflings-regular.woff2");   /*Caminho da fonte*/
+}
+
+/*box de de Login*/
+.box{ 
+   
+    position: relative;/*posição relativa a pagina*/
+    z-index: 1;/*box que tem como empilhamento igual a um por ser o primeiro*/
+    text-align: center;
+    border-radius: 10px;
+    background-color: #00a680; /*Verde mais claro*/
+    border: solid 1px #088A08;/*verde mais escuro*/ 
+    margin-right: 2px;
+    margin-top: 5px;
+}
+
+/*parte de cima do box*/
+.tag{ 
+    position: relative; 
+    top: -1px; 
+    width: 70%; 
+    margin: auto;
+    height: 70px;
+    color:#fff; 
+    font-size: 36px; 
+    font-weight: bold; 
+    line-height: 80px; 
+    text-shadow:0 -1px 0 rgba(0,0,0,.2);
+    background-color: #b5ae63;
+    background-size: 2px 2px;
+    background-image: -webkit-linear-gradient(45deg, #c0b96a 25%, transparent 25%, transparent 75%, #c0b96a 75%, #c0b96a), 
+        -webkit-linear-gradient(-45deg, #c0b96a 25%, transparent 25%, transparent 75%, #c0b96a 75%, #c0b96a);
+    background-image: -moz-linear-gradient(45deg, #c0b96a 25%, transparent 25%, transparent 75%, #c0b96a 75%, #c0b96a), 
+        -moz-linear-gradient(-45deg, #c0b96a 25%, transparent 25%, transparent 75%, #c0b96a 75%, #c0b96a);
+    background-image: -o-linear-gradient(45deg, #c0b96a 25%, transparent 25%, transparent 75%, #c0b96a 75%, #c0b96a), 
+        -o-linear-gradient(-45deg, #c0b96a 25%, transparent 25%, transparent 75%, #c0b96a 75%, #c0b96a);
+    background-image: -ms-linear-gradient(45deg, #c0b96a 25%, transparent 25%, transparent 75%, #c0b96a 75%, #c0b96a), 
+        -ms-linear-gradient(-45deg, #c0b96a 25%, transparent 25%, transparent 75%, #c0b96a 75%, #c0b96a);
+    background-image: linear-gradient(45deg, #c0b96a 25%, transparent 25%, transparent 75%, #c0b96a 75%, #c0b96a), 
+        linear-gradient(-45deg, #c0b96a 25%, transparent 25%, transparent 75%, #c0b96a 75%, #c0b96a);		
+}
+/*formatação das laterais da parte de cima do box*/
+.tag:after,
+.tag:before{
+    position:absolute;
+    left:0; 
+    content: ""; 
+    width: 100%; 
+    z-index: 8
+}
+
+.tag:after{
+    height: 30px; 
+    top: 0px; 
+    background: -webkit-linear-gradient(top,rgba(226,217,124,0) 0%,rgba(226,217,124,1) 40%,rgba(226,217,124,1) 60%,rgba(226,217,124,0) 100%);
+    background: -moz-linear-gradient(top,rgba(226,217,124,0) 0%,rgba(226,217,124,1) 40%,rgba(226,217,124,1) 60%,rgba(226,217,124,0) 100%);
+    background: -o-linear-gradient(top,rgba(226,217,124,0) 0%,rgba(226,217,124,1) 40%,rgba(226,217,124,1) 60%,rgba(226,217,124,0) 100%);
+    background: -ms-linear-gradient(top,rgba(226,217,124,0) 0%,rgba(226,217,124,1) 40%,rgba(226,217,124,1) 60%,rgba(226,217,124,0) 100%);
+    background: linear-gradient(top,rgba(226,217,124,0) 0%,rgba(226,217,124,1) 40%,rgba(226,217,124,1) 60%,rgba(226,217,124,0) 100%);
+}
+
+
+.tag:before{ 
+    height:8px; 
+    bottom: -5px; 
+    z-index: -1;  
+    background: -webkit-radial-gradient(ellipse closest-side, #b8b165, #b8b165 0%, #b8b165 70%,#732e2e 99%, transparent);
+    background: -moz-radial-gradient(ellipse closest-side, #b8b165, #b8b165 0%, #b8b165 70%,#732e2e 99%, transparent);
+    background: -o-radial-gradient(ellipse closest-side, #b8b165, #b8b165 0%, #b8b165 70%,#732e2e 99%, transparent);
+    background: -ms-radial-gradient(ellipse closest-side, #b8b165, #b8b165 0%, #b8b165 70%,#732e2e 99%, transparent);
+    background: radial-gradient(ellipse closest-side, #b8b165, #b8b165 0%, #b8b165 70%,#732e2e 99%, transparent);
+    background-size:8px 8px;
+}
+
+/*botoes*/
+
+.log-btn {
+    background:  #c0b96a;
+    dispaly: inline-block;
+    width: 80%;
+    font-size: 16px;
+    height: 40px;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    cursor:pointer;
+}
+
+

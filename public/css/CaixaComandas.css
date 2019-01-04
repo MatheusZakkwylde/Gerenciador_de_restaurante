@@ -1,0 +1,149 @@
+#caixa{
+    margin-left: 230px;
+     background-color: #00a680;  
+}
+
+.link{
+    color: #fff;
+    padding: 8px;
+    display: block;
+    width: 70%;
+    text-align: center;
+    border-radius: 3px;
+}
+.link:hover{
+    background-color: #fff;
+    color: #088A08;/*verde mais escuro*/ 
+
+}
+
+.btns{
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+
+#pedidos{
+    margin-left: 240px;
+}
+
+
+.input-group{
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+.input-group button{
+    background-color: #00a680; /*Verde mais claro*/
+    color:#fff;
+}
+.input-group button:hover{
+    background-color: #fff; 
+    color:#088A08;/*verde mais escuro*/ 
+    border: solid 1px #088A08;/*verde mais escuro*/ 
+}
+
+.modal-body p{
+    font-family: fonte;
+    font-size: 16px;
+    color:#fff;
+}
+
+.cabeca{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+.caixa{
+    display: flex;
+    flex-wrap: wrap;
+    word-spacing: -10px;
+}
+
+.caixa > p{
+    margin-left: 5px;
+}
+
+#cliente{
+    border-bottom: 1px solid #fff;
+}
+
+.btncomanda{
+    margin-left: 10px;
+}
+
+.rodape{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-top: 5px;
+}
+.rodape > p{
+    margin-right: 10px;
+}
+.desconto{
+    display: flex;
+    justify-content: space-between;
+}
+.contaPagar{
+   float: right;
+}
+
+#botao{
+    margin-left: 30px;
+    margin-bottom: 5px;
+}
+
+/*total da comanda*/
+.total{
+    display: flex;
+    flex-direction: row-reverse;
+}
+/*botoes da comanda*/
+.bt{
+    margin-top: 10px;
+    padding: 6px;
+    font-family: fonte;
+    font-size: 16px;
+    word-spacing: -12px;
+     background-color: #00a680; /*Verde mais claro*/
+    color: #fff;
+}
+.bt:hover{
+    background-color: #fff;
+    color:#088A08;/*verde mais escuro*/ 
+    border: solid 1px #088A08;/*verde mais escuro*/ 
+}
+
+.texto{
+    border-bottom: 1px solid #fff;
+}
+#label{
+    color: #fff;
+    font-size: 20px;
+    font-family: fonte;  
+    word-spacing: -10px;
+    margin-bottom: 20px;
+}
+
+/*parte do pedido*/
+#pedido{
+    margin-top: 30px;
+    display: none;
+}
+
+.status{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.rodapePedido{
+    display: flex;
+
+    justify-content: space-between;
+}
+
+/*fim do pedido*/
+#excluir{
+    display: flex;
+    flex-direction: row-reverse;
+}

@@ -1,0 +1,198 @@
+@charset "UTF-8"; /*Deixando o css em linguagem latina*/
+
+/*Fontes carregadas da pasta fonts*/
+
+@font-face{
+    font-family : 'fonte';            /*Nome da fonte*/
+    src: url("/public/fonts/glyphicons-halflings-regular.woff2");   /*Caminho da fonte*/
+}
+
+/*todo o conteudo*/
+#conteiner{
+    margin-left: 220px;
+}
+/* comanda menu*/
+nav{
+    background-color: #00a680;  
+    padding-left: 0px;
+}
+
+.link{
+    color: #fff;
+    width: 100%;
+    padding: 8px;
+    display: block;
+    width: 70%;
+    text-align: center;
+    border-radius: 3px;
+}
+.link:hover{
+    background-color: #fff;
+    color: #088A08;/*verde mais escuro*/ 
+
+}
+
+.menu i{
+    margin-left: 5px;
+}
+.btns{
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+#botaoSelect{
+    margin-top: 10px;
+}
+
+#botaoSelect .btn{
+    background-color: #00a680; /*Verde mais claro*/
+    color:#fff;
+}
+#botaoSelect .btn:hover{
+    background-color: #fff;
+    color: #088A08;/*verde mais escuro*/ 
+    border: solid 1px #088A08;/*verde mais escuro*/ 
+}
+a{
+    text-decoration: none;
+    color: #fff;
+}
+a:hover{
+    color: #fff;
+}
+/*fim da parte do menu da comanda*/
+
+/*comanda*/
+#comanda{
+    display: none;
+    margin-top: 15px;
+}
+h11{
+    color: #DF0101;
+}
+.btn-gera{
+    background-color: #00a680; /*Verde mais claro*/
+    color:#fff;
+}
+.btn-gera:hover{
+    background-color: #fff;
+    color: #088A08;/*verde mais escuro*/ 
+    border: solid 1px #088A08;/*verde mais escuro*/ 
+}
+
+/*botao gera*/
+#gera{
+    padding-top: 25px;
+}
+
+/*fim da comanda*/
+
+/*parte do pedido*/
+#pedido{
+    margin-top: 30px;
+    display: none;
+}
+
+.status{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.rodapePedido{
+    display: flex;
+
+    justify-content: space-between;
+}
+.btncomanda{
+    margin-left: 5px;
+}
+/*fim do pedido*/
+
+
+#comandas{
+    display: none;
+    margin-top: 10px;
+}
+
+.input-group{
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+.input-group button{
+    background-color: #00a680; /*Verde mais claro*/
+    color:#fff;
+}
+.input-group button:hover{
+    background-color: #fff; /*Verde mais claro*/
+    color:#088A08;/*verde mais escuro*/ 
+    border: solid 1px #088A08;/*verde mais escuro*/ 
+}
+
+.modal-body p{
+    font-family: fonte;
+    font-size: 16px;
+    color:#fff;
+}
+
+.cabeca{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+.caixa{
+    display: flex;
+    flex-wrap: wrap;
+    word-spacing: -10px;
+}
+
+.caixa > p{
+    margin-left: 5px;
+}
+
+#cliente{
+    border-bottom: 1px solid #fff;
+}
+
+.btncomanda{
+    margin-left: 10px;
+}
+
+
+
+#rodape{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-top: 5px;
+}
+#rodape > p{
+    margin-right: 10px;
+}
+#botao{
+    margin-left: 30px;
+    margin-bottom: 5px;
+}
+
+/*total da comanda*/
+.total{
+    display: flex;
+    flex-direction: row-reverse;
+}
+/*botoes da comanda*/
+#bt{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+#bt .btn-danger{
+    margin-left: 5px;
+}
+.texto{
+    border-bottom: 1px solid #fff;
+}
+#label{
+    color: #fff;
+    font-size: 20px;
+    font-family: fonte;  
+    word-spacing: -10px;
+    margin-bottom: 20px;
+}

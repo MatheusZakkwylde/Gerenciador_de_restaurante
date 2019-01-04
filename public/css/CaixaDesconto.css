@@ -1,0 +1,42 @@
+#caixa{
+    margin-left: 230px;
+     background-color: #00a680;  
+}
+.caixa{
+    margin-left: 250px;
+    margin-top: 10px;
+}
+
+.link{
+    color: #fff;
+    width: 100%;
+    padding: 8px;
+    display: block;
+    width: 70%;
+    text-align: center;
+    border-radius: 3px;
+}
+.link:hover{
+    background-color: #fff;
+    color: #088A08;/*verde mais escuro*/ 
+
+}
+
+.btns{
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+/*botoes da desconto*/
+.bt{
+    font-family: fonte;
+    font-size: 15px;
+    word-spacing: -12px;
+     background-color: #00a680; /*Verde mais claro*/
+    color: #fff;
+}
+.bt:hover{
+    background-color: #fff;
+    color:#088A08;/*verde mais escuro*/ 
+    border: solid 1px #088A08;/*verde mais escuro*/ 
+}
+

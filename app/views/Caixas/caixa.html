@@ -1,0 +1,27 @@
+#{extends 'Template/template.html'/}
+#{set title: 'Rancho Alegre -Caixa'/}
+<link rel="stylesheet" media="screen" href="@{'/public/css/Caixa.css'}">
+<nav class=" col-md-12" >
+    <div class="col-md-10" id="caixa">
+        <div class="row">
+            <div class="col-md-2 btns">
+                <a class="link" href="@{Caixas.comandas}" ><span>Comandas </span><i class="glyphicon glyphicon-list-alt"></i></a>
+            </div>
+
+            <div class="col-md-3 btns">
+                <a class="link"href="@{Caixas.empenhadas}" ><span>Empenhadas </span><i class="glyphicon glyphicon-list-alt"></i></a>
+            </div>
+
+            <div class="col-md-2 btns">
+                <a class="link"href="@{Caixas.inativas}" ><span>Inativas </span><i class="glyphicon glyphicon-list-alt"></i></a>
+            </div>
+            <div class="col-md-2 btns">
+                <a class="link" href="@{Caixas.saldo}"><span>Saldo </span><i class="glyphicon glyphicon-usd"></i></a>
+            </div>
+            <div class="col-md-3 btns">
+                <a class="link"href="@{Caixas.fechaCaixa(1)}" ><span>Fecha caixa </span><i class="glyphicon glyphicon-usd"></i></a>
+            </div>
+        </div>
+    </div>
+</nav>
+

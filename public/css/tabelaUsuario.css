@@ -1,0 +1,40 @@
+@charset "UTF-8"; /*Deixando o css em linguagem latina*/
+
+/*Fontes carregadas da pasta fonts*/
+
+@font-face{
+    font-family : 'fonte';            /*Nome da fonte*/
+    src: url("/public/fonts/glyphicons-halflings-regular.woff2");   /*Caminho da fonte*/
+}
+
+.caixa{
+    margin-left: 5px;
+    margin-top: 5px;
+}
+.divs {
+    display: flex;
+}
+p{
+    margin-left: 5px;
+    word-spacing: -10px;
+}
+
+#botoes{
+    display: flex;
+    flex-direction: row-reverse;
+    margin-bottom: 10px;
+}
+.btn{
+    margin-right: 2px;
+}
+
+#conteudo{
+    margin-top: 30px;
+     border-bottom: solid 2px #eee;
+}
+#nome{
+    margin-top: 30px;
+}
+p , label{
+    font-family: fonte;
+}

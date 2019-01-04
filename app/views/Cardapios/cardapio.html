@@ -1,0 +1,91 @@
+#{extends 'Template/template.html'/}
+#{set title: 'Rancho Alegre -Cardapio'/}
+<link rel="stylesheet" media="screen" href="@{'/public/css/Cardapio.css'}">
+
+<div id="col" class="col-md-12">
+    <div class="col-md-12">
+        <div class="col-md-10">
+
+            <form action="@{Cardapios.salvarPrato}" name="Filter" class="form" method="post" enctype="multipart/form-data">
+                <div class="col-md-12">
+                    <label>Cadastro Cardápio: </label>
+                </div>
+                <div class="modal-footer col-md-12"></div>
+
+                <input type="hidden" value="${prato?.id}" name="prato.id">
+
+                <div  class="form-group col-md-2"> 
+                    #{if prato.foto?.exists()}
+                    <img  src="@{Cardapios.fotoPrato(prato.id)}" id="img" accept="image/*" style="width: 150px; height: 150px;" class="img-responsive" class="img-thumbnail" >
+                    #{/if}
+                    #{else}
+                    <img  src="@{Cardapios.fotoPadrao}" id="img" accept="image/*" style="width: 150px; height: 150px;" class="img-responsive" class="img-thumbnail" >
+                    #{/else}
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label><h11>*</h11> Tipo Produto :</label>
+
+                    <select class="form-control col-5" name="prato.tipo">
+                        <option>Selecione:</option>
+                        #{list items:tipos, as:'tipo'}
+                        <option value="${tipo}" 
+                                ${(prato?.id != null && prato?.tipo == tipo)? 'selected':'' }>${tipo}</option>
+                        #{/list}
+                    </select>
+                </div>
+
+                <div class="form-group col-md-7">
+                    <label><h11>*</h11> Produto :</label>
+                    <input type="text" name="prato.nome" value="${prato?.nome}" class="form-control" placeholder="Ex.: Peixe Frito, Galinha a Cabidela"required>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label> Acompanhamentos :</label> 
+                    <input type="text"  name="prato.acompanhamento" value="${prato?.acompanhamento}" class="form-control" placeholder="Ex.: Batata, Macaxeira, Pirão" >
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label><h11>*</h11> Quantidade :</label> 
+                    <input type="number"  name="prato.quantidade" value="${prato.quantidade}" class="form-control" placeholder="" required>
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label><h11>*</h11> Preço R$ :</label> 
+                    <input type="text" id="preco" name="prato.preco" value="${prato?.preco}" class="form-control" placeholder="" required>
+                </div>
+
+                <div class="col-md-12">
+                    <div id ="botao">
+                        <label class="btn btn-primary btn-sm" for='upload' ><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span></label>
+                        <input id="upload" class="form-control" type="file" name="prato.foto"  onchange="uploadimg();" >
+                        #{if prato.id == null}
+                        <a class="btn btn-danger btn-sm" onclick=" excluirFoto(1)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                        #{/if}
+                        #{else}
+                        <a href ="@{Cardapios.removerFoto(prato.id)}"class="btn btn-danger btn-sm" onclick=" excluirFoto(1)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                        #{/else}
+                    </div>
+                </div>
+
+
+                <div class="modal-footer col-md-12">
+                    <button type="submit" class="btn btn-success">Cadastrar</button>
+                    <button type="reset" class="btn btn-default" data-dismiss="modal">Limpar</button>
+                </div> 
+            </form> 
+        </div>
+    </div>
+</div>  
+<!--chamada do troca foto-->
+<script src="@{'/public/js/uploadImg.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+
+<!--chamada da biblioteca money para campo moeda-->
+<script src="@{'/public/js/maskMoney.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+
+<script type="text/javascript">
+                                       $(document).ready(function () {
+                                           $("#preco").maskMoney({decimal: ".", thousands: "."});
+                                       });
+
+</script>

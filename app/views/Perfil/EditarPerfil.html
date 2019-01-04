@@ -1,0 +1,160 @@
+#{extends 'Template/template.html'/}
+#{set title: 'Funcionario'/}
+<link rel="stylesheet" media="screen" href="@{'/public/css/Usuario.css'}">
+<div class="col-md-2"></div>
+
+<div class="col-md-12" id="form">
+    <div class="col-md-10">
+        <form action="@{Perfil.salvar}" name="Filter" class="form" method="post" enctype="multipart/form-data">
+
+            <div class="col-md-12">
+                <label id="Label">Cadastro Usuário: </label>
+                <div class="modal-footer"></div>
+            </div>
+
+            <input type="hidden" value="${usuario?.id}" name="usuario.id">
+
+            <div   class="form-group col-md-2 margem"> 
+
+                #{if usuario.foto?.exists()}
+                <img  src="@{Perfil.foto(usuario.id)}" id="img" accept="image/*" class="img-responsive" class="img-thumbnail" >
+                #{/if}
+                #{else}
+                <img  src="@{Perfil.fotoPadrao}" id="img" accept="image/*"  class="img-responsive" class="img-thumbnail" >
+                #{/else}
+
+                <div id ="botao" class="col-md-12">
+                    <div >
+                        <label class="btn btn-primary  btn-sm" for='upload' ><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span></label>
+                        <input id="upload" class="form-control" type="file" name="usuario.foto"  onchange="uploadimg();" >
+                        #{if usuario.foto.exists()}
+                        <a href ="@{Cadastros.removerFoto(usuario.id)}" class="btn  btn-sm btn-danger" onclick="excluir(1)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                        #{/if}
+                        #{else}
+                        <a class="btn btn-danger btn-sm " onclick="excluir(1);"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                        #{/else}
+                    </div>
+                </div>
+            </div>
+
+            <div  class="col-md-10 ">
+                <div class="form-group col-md-12">
+                    <label><h11>*</h11> Nome:</label>
+                    <input type="text" name="usuario.nome" value="${usuario?.nome}" class="form-control" placeholder="Ex: Matheus Pinheiro Pereira" required>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="status"><h11>*</h11> Cargo :</label>
+                    <select class="form-control col-5" name="usuarios.cargo">
+                        
+                        <option>Selecione:</option>
+                        #{list items:cargos, as:'cargo'}
+                        <option value="${cargo}" 
+                                ${(usuario?.id != null && usuario?.cargo == cargo)? 'selected':'' }>${cargo}</option>
+                        #{/list}
+                    </select>
+                </div>
+
+                <div class="form-group col-md-8">
+                    <label><h11>*</h11> E-mail:</label> 
+                    <input type="email" name="usuario.email" value="${usuario?.email}" class="form-control" placeholder="Ex.: MatheusPinheiro@hotmail.com" required>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="formGroupExampleInput"><h11>*</h11> Cpf:</label> 
+                    <input type="text"  name="usuario.cpf" id="cpf" value="${usuario?.cpf}" class="form-control"  placeholder="Ex.: 000.000.000-00" required>
+                </div>
+
+                <div class="form-group col-md-4 ">
+                    <label><h11>*</h11> Telefone:</label> 
+                    <input type="text" name="usuario.telefone"  id="telefone" value ="${usuario?.telefone}"class="form-control" placeholder="Ex.: (00) 0000-0000" required> 
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label><h11>*</h11> Telefone Celular:</label> 
+                    <input type="text" name="usuario.celular" id="celular"  value ="${usuario?.celular}"class="form-control" placeholder="Ex.: (00) 00000-0000" required> 
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="col-md-2"></div>
+
+                <div class="form-group col-md-5">
+                    <label><h11>*</h11> Logradouro:</label>
+                    <input type="text" name="usuario.logradouro" value="${usuario?.logradouro}" class="form-control" placeholder="Ex.: Rua Adalto Gomes de Paiva" required>
+                </div>
+
+
+                <div class="form-group col-md-5">
+                    <label><h11>*</h11> Bairro:</label>
+                    <input type="text" name="usuario.bairro" value="${usuario?.bairro}" class="form-control" placeholder="Ex.: Benedito Bentes" required>
+                </div>
+
+                <div class="col-md-2"></div>
+
+                <div class="form-group col-md-5">
+                    <label><h11>*</h11> Estado:</label> 
+                    <select  name="usuario.estado" id="estado" value = "${usuario?.estado}" class="form-control" required>
+                        <!--os options são colocados pelo script-->
+                    </select>
+                </div>
+
+                <div class="form-group col-md-5">
+                    <label><h11>*</h11> Cidade:</label> 
+                    <select  name="usuario.cidade" id="cidade" value = "${usuario?.cidade}" class="form-control" required>    
+                        <!--os options são colocados pelo script apos escolha do estado-->
+                    </select>
+                </div>
+                <div class="col-md-2"></div>
+
+                <div class="form-group col-md-3">
+                    <label><h11>*</h11> Senha:</label>
+                    <input  type="password" class="form-control" name="usuario.senha" value="${usuario?.senha}" placeholder="senha" required>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label><h11>*</h11> Confirmar Senha:</label>
+                    <input type="password" name="usuario.confSenha" value="${usuario.confSenha}" class="form-control" placeholder="senha novamente"  required>
+                </div>
+                
+                <div class="form-group col-md-4">
+                    <label>Informações:</label>
+                    <textarea name="usuario.informacoes" class="form-control" rows="3" placeholder="Informação">${usuario?.informacoes}</textarea>
+                </div>
+            </div>
+
+            <div class="modal-footer col-md-12">
+                <button type="submit" class="btn btn-success">Cadastrar</button>
+                <button type="reset" class="btn btn-default" data-dismiss="modal">Limpar</button>
+            </div> 
+        </form> 
+    </div>
+</div> 
+
+
+<script type="text/javascript">
+
+    function uploadimg() {
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(document.getElementById("upload").files[0]);
+
+        oFReader.onload = function (oFREvent) {
+            document.getElementById("img").src = oFREvent.target.result;
+        };
+    }
+    ;
+
+    function excluir(valorClick) {
+
+        if (valorClick === 1) {
+            document.getElementById("img").src = "/public/images/user.png";
+            document.getElementById("upload").value = null;
+        }
+    }
+</script>
+
+<!--chamada da mascara dos campos-->
+<script src="@{'/public/js/Mascara.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<!--chamando do script estados e cidades-->
+<script src="@{'/public/js/cidades-estados-utf8.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<script src="@{'/public/js/CidadeEstado.js'}" type="text/javascript" charset="${_response_encoding}"></script>
